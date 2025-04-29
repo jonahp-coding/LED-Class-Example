@@ -8,7 +8,7 @@
 
 #include "Tools.h"
 #include "EventHandlerInterface.h"
-#include "LED.h"
+#include "IO.h"
 
 //--------------------------------------------------------------------------------------------------
 // class MainController
@@ -38,19 +38,19 @@ class MainController : public EventHandlerInterface{
 
 	protected:
 
-		LED ledGreen;		// creating state declaration as it does not allocate memory on the heap..
-		LED *ledGreenPtr;	// creating pointer to be set to the ledGreen instance so
+		IO ledGreen;		// creating static declaration as it does not allocate memory on the heap..
+		IO *ledGreenPtr;	// creating pointer to be set to the ledGreen instance so
 							// that pointer can be used everywhere for consistency
 		
-		// a second object of the same class (LED)
+		// a second object of the same class (IO)
 
-		LED ledYellow;
-		LED *ledYellowPtr;
+		IO ledYellow;
+		IO *ledYellowPtr;
 
-		// a third object of the same class (LED)
+		// a third object of the same class (IO)
 
-		LED ledRed;
-		LED *ledRedPtr;
+		IO ledRed;
+		IO *ledRedPtr;
 
     private:
 
