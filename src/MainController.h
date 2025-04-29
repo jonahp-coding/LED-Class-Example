@@ -8,7 +8,8 @@
 
 #include "Tools.h"
 #include "EventHandlerInterface.h"
-#include "IO.h"
+#include "DigitalIO.h"
+#include "PwmIO.h"
 
 //--------------------------------------------------------------------------------------------------
 // class MainController
@@ -38,19 +39,19 @@ class MainController : public EventHandlerInterface{
 
 	protected:
 
-		IO ledGreen;		// creating static declaration as it does not allocate memory on the heap..
-		IO *ledGreenPtr;	// creating pointer to be set to the ledGreen instance so
-							// that pointer can be used everywhere for consistency
+		DigitalIO ledGreen;		// creating static declaration as it does not allocate memory on the heap..
+		DigitalIO *ledGreenPtr;	// creating pointer to be set to the ledGreen instance so
+								// that pointer can be used everywhere for consistency
 		
 		// a second object of the same class (IO)
 
-		IO ledYellow;
-		IO *ledYellowPtr;
+		DigitalIO ledYellow;
+		DigitalIO *ledYellowPtr;
 
 		// a third object of the same class (IO)
 
-		IO ledRed;
-		IO *ledRedPtr;
+		DigitalIO ledRed;
+		DigitalIO *ledRedPtr;
 
     private:
 

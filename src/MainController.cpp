@@ -38,10 +38,10 @@
  */
 
 MainController::MainController() :
-    ledGreen("Green LED", 0, "Green"),
-    ledYellow("Yellow LED", 1, "Yellow"),
-    ledRed("Red LED", 2, "Red"),
     className(""),
+    ledGreen("Green LED"),
+    ledYellow("Yellow LED"),
+    ledRed("Red LED"),
     ledGreenPtr(nullptr),
     ledYellowPtr(nullptr),
     ledRedPtr(nullptr),
