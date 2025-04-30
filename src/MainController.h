@@ -50,8 +50,10 @@ class MainController : public EventHandlerInterface{
 
 		// a third object of the same class (IO)
 
-		DigitalIO ledRed;
-		DigitalIO *ledRedPtr;
+		PwmIO ledRed;
+		PwmIO *ledRedPtr;
+
+		uint16_t fadeRate;
 
     private:
 

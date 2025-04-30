@@ -81,6 +81,9 @@ void MainController::init()
     ledYellowPtr->init(ledYellowPin);
     ledRedPtr->init(ledRedPin);
 
+    fadeRate = 15; // IMPORTANT!! CHANGE THIS | @param fadeRate is used in the fade in/out for loop in ::process to 
+                   // control the rate which the pwmVal of the PwmIO object increases/decreases.
+
 }// end of MainController::init
 //--------------------------------------------------------------------------------------------------
 
@@ -120,25 +123,28 @@ void MainController::startSerialPort()
 
 void MainController::process()
 {
+    /**
+     * This ::process uses a for loop to fade in/out ( i.e. increase/decrease the pwmVal of ) the LED of PwmIO class, at a given rate, @param fadeRate.
+     * The other LEDs, @param ledGreenPtr and @param ledYellowPtr are of DigitalIO class and turnOn / turnOff when the fade loop goes from fade In to fade Out.
+     */
 
+    Serial.println("Fade In...");
     ledGreenPtr->turnOn();
     ledYellowPtr->turnOff();
-    ledRedPtr->turnOff();
+    for (uint8_t i=0; i<255; i++)
+    {
+        ledRedPtr->setPwm(i);
+        delay(fadeRate);
+    }
 
-    delay(10000);
-
+    Serial.println("Fade Out...");
     ledGreenPtr->turnOff();
     ledYellowPtr->turnOn();
-    ledRedPtr->turnOff();
-
-    delay(3000);
-
-    ledGreenPtr->turnOff();
-    ledYellowPtr->turnOff();
-    ledRedPtr->turnOn();
-
-    delay(10000);
-
+    for (uint8_t i=255; i>0; i--)
+    {
+        ledRedPtr->setPwm(i);
+        delay(fadeRate);
+    }
     //delay(500); // slow down a bit so the serial monitor is easier for humans to follow
 
     Serial.print(className);  Serial.print(": process called...");
